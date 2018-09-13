@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?python
+    #time="Sun, 20 Nov 2005 13:30:14 GMT"
+    #games=[]
+?>
+<rss version="0.92" 
+     xmlns:py="http://genshi.edgewall.org/">
+  <channel>
+    <title>CGIskak - Review</title>
+    <link>http://JesperOlsen.Net/PChess//cgireview.py</link>
+    <description>Review of recent games played against PChess</description>
+    <language>en-gb</language>
+    <copyright>Copyright 2005, Jesper Olsen</copyright>
+    <pubDate> $time </pubDate>
+    <lastBuildDate> $time </lastBuildDate>
+    <image>
+      <title>CGIskak - Review</title>
+      <url>http://JesperOlsen.Net/PChess/bitmaps/board.jpg</url>
+      <link>http://JesperOlsen.Net/PChess/cgireview.py</link>
+      <width>67</width>
+      <height>67</height>
+    </image>
+    <item py:for="title, url in games">
+      <title> $title </title>
+      <link> $url </link>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+recursive-include chess/static *
+recursive-include chess/templates *
+recursive-include chess/Genshi *.html *.xml
+recursive-include docs *

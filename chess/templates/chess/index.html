@@ -1,0 +1,13 @@
+Hello World
+{% if True %}
+    <ul>
+    {% for (y,lr) in lb %}
+        <li> {{y}} </li>
+        {% for (i,src) in lr %}
+            <li> {{src}} </li>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

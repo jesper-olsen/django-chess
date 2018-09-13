@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?python
+    #board="RP....pr.P....pnBPN...pbK..Pp..kQP...p.qBP....pbNP....pnRP....pr"
+    #status="White's turn"
+    #color="white"
+    #lastFrom=38
+    #lastTo=37
+    #legal="[[18, 28], [33, 35]]"
+    #nmoves=3
+?>
+<chessgame>
+    <board>$board</board>
+    <status>$status</status>
+    <color>$color</color>
+    <lastFrom>$lastFrom</lastFrom>
+    <lastTo>$lastTo</lastTo>
+    <legal>$legal</legal>
+    <nmoves>$nmoves</nmoves>
+</chessgame>

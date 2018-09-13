@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta content="vi"  name="generator" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link href="/chess/static/chess/chess.css"  type="text/css"  rel="stylesheet" />
+    <link href="/chess/static/chess/favicon.ico"  rel="SHORTCUT ICON" />
+    <title>CGIskak</title>
+    <meta content="Chess, game, python, C, open source"  name="keywords" />
+  </head>
+  <body>
+    <h2>CGIskak - Recent games</h2>
+    <p>
+      {% if prev %}
+      <a href="{{prev}}">prev</a>
+      {% endif %}
+      {% if prev and next %}
+      <span> - </span>
+      {% endif %}
+      {% if next %}
+      <a href="{{next}}">next</a>
+      {% endif %}
+    </p>
+    <div style="margin-left: 20px" >
+        {% for d in games %}
+        <span>
+            {{d.n}}.
+            <a href="{{d.url}}"> {{d.label}} </a>
+            {% if flag %}
+            <img src="{{d.flag}}" width="25px" height="15px" />
+            {% endif %}
+            <br/>
+        </span>
+        {% endfor %}
+    </div>
+    <p>
+      <br/>
+      <br/>
+      <a href="/chess" >Back to game</a>
+      <br/>
+      <br/>
+      <hr/>
+      <a href="review.rss"  class="rss" >RSS</a>
+    </p>
+  </body>
+</html>

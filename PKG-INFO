@@ -1,0 +1,48 @@
+Metadata-Version: 1.1
+Name: django-chess
+Version: 0.1
+Summary: A simple Django app to play Web-based chess.
+Home-page: https://www.example.com/
+Author: Jesper Olsen
+Author-email: jesper@jesperolsen.net
+License: BSD License
+Description: =====
+        Chess
+        =====
+        
+        Chess is a Django app to play chess through a web browser.
+        
+        Quick start
+        -----------
+        
+        1. Add "chess" to your INSTALLED_APPS setting like this::
+        
+            INSTALLED_APPS = [
+                ...
+                'chess',
+            ]
+        
+        2. Include the chess URLconf in your project urls.py like this::
+        
+            path('chess/', include('chess.urls')),
+        
+        3. Run `python manage.py migrate` to create the chess models.
+        
+        4. Start the development server and visit http://127.0.0.1:8000/admin/
+           to create a poll (you'll need the Admin app enabled).
+        
+        5. Visit http://127.0.0.1:8000/chess/ to participate in the poll.
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: X.Y
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content

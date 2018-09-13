@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta content="Jesper's HTMLWriter"  name="generator" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link href="/chess/static/chess/chess.css"  type="text/css"  rel="stylesheet" />
+    <link href="/chess/static/chess/favicon.ico"  rel="SHORTCUT ICON" />
+    <title>CGIskak</title>
+    <meta content="Chess, game, python, C, open source"  name="keywords" />
+  </head>
+  <body>
+      <h2>CGIskak - Preferences</h2>
+    <p>Here you can set the game strength. The engine iteratively searches the current position for the best move. Each iteration the search depth is extended by one ply until a stop criteria is met:
+
+      <ul>
+        <li>The search depth exceeds
+          <em>max_ply</em>
+        </li>
+        <li>The number of positions searched exceeds
+          <em>max_search</em>
+
+        </li>
+      </ul>
+      Below you can set the value of these two parameters.
+      <em>max_search</em>
+      is typically the more useful of the two - since it correlates better with time.
+      In both cases, however, a larger value means stronger game play (and longer response time).
+      <br/>
+      <br/>
+    </p>
+    <form action="/chess/settings/"  style="background-color: rgb(50,50,50); width: 400px; border: 1px solid black;padding: 5px;"  name="pref"  method="post" >
+      {% csrf_token %}
+      <table border="0"  summary="" >
+        {% for d in pref %}
+        <tr>
+            <td>{{d.pname}}</td>
+            <td><input align="right"  type="text"  name="{{d.pname}}"  value="{{d.pval}}" /></td>
+          <td>[{{d.pmin}}-{{d.pmax}}]</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <input type="submit"  value="Save" />
+    </form>
+    <br/>
+
+    <a href="/chess" >Back to game</a>
+  </body>
+</html>

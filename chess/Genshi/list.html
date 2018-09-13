@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?python
+    #next=None
+    #prev=None
+    #games=[]
+?>
+
+<html xmlns:py="http://genshi.edgewall.org/">
+  <head>
+    <meta content="vi"  name="generator" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link href="chess.css"  type="text/css"  rel="stylesheet" />
+    <link href="/favicon.ico"  rel="SHORTCUT ICON" />
+    <title>CGIskak</title>
+    <meta content="Chess, game, python, C, open source"  name="keywords" />
+  </head>
+  <body>
+    <h2>CGIskak - Recent games</h2>
+    <p>
+      <a py:if="prev!=None" href="${prev}">prev</a>
+      <span py:if="prev!=None and next!=None"> - </span>
+      <a py:if="next!=None" href="${next}">next</a>
+    </p>
+    <div style="margin-left: 20px" >
+        <span py:for="n, url, label, flag in games">
+            ${n}.
+            <a href="${url}"> $label </a>
+            <img py:if='flag!=""' src="${flag}" width="25px" height="15px" />
+            <br/>
+        </span>
+    </div>
+    <p>
+      <br/>
+      <br/>
+      <a href="cgiskak.py" >Back to game</a>
+      <br/>
+      <br/>
+      <hr/>
+      <a href="review.rss"  class="rss" >RSS</a>
+    </p>
+  </body>
+</html>

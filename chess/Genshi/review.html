@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?python
+    title="CGIskak - Review"
+    import PChess
+    #board="RP....pr.P....pnBPN...pbK..Pp..kQP...p.qBP....pbNP....pnRP....pr"
+    #boards=[]
+    #moves=[(1,4,0,'h',1,0,314,2)]
+    #info=[("Date", "2005"), ("EngineName", "PChess")]
+    #status="Black or White's turn..."
+    #<table py:def="display_history(moves)" cellspacing="0"  border="1"  summary="">
+?>
+
+<html xmlns:py="http://genshi.edgewall.org/"> 
+  <head>
+    <title> $title </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+    <link href="/chess/static/chess/chess.css"  type="text/css"  rel="stylesheet" />
+    <link href="/chess/static/chess/favicon.ico"  rel="SHORTCUT ICON" />
+    <meta content="Chess, game, python, C, open source, AJAX"  name="keywords" />
+    <script src="/chess/static/chess/js/cgiskak.js"  type="text/javascript" >
+    </script>
+    <script type="text/javascript" > boards=[]; statuses=[];</script>
+    <script py:for="i, (b,status) in enumerate(boards)" type="text/javascript" > boards[${i}]="$b"; statuses[${i}]="$status";
+    </script>
+    <script type="text/javascript" > board=boards[0]; status=statuses[0]; </script>
+  </head>
+  <body>
+    <h2> $title </h2>
+    <ul>
+        <li py:for="(key, val) in info">
+            $key :   
+            <img py:if='key =="player h"' src="${val}" width="25px" height="15px" />
+            <span py:if='key!="player h"'> $val </span>
+        </li>
+    </ul>
+    <br/>
+    <div id="pagebody" height="100%"> 
+      <div id="maincontent">
+          <table cellpadding="0"  cellspacing="0"  border="0"  summary="" >
+            <tr py:for="y in xrange(8)">
+                <td py:for="x in xrange(8)">
+                     <?python i=(7-x)*8+7-y ?>
+                     <?python src=xy2src(x,7-y,board) ?>
+                     <img name="sq${i}" src="$src" onmouseover="set_cursor($i);" onmousedown="move(${i});" />
+                </td>
+                <td>${8-y}</td>
+            </tr>
+            <tr><td py:for="c in 'ABCDEFGH'" align="center">$c</td></tr>
+          </table>
+          <p>
+              <br/>
+              <span id="status" > $status </span>
+              <br/><br/><br/><br/>
+              <a href="/chess">Back to game</a>
+          </p>
+      </div>
+      <div id="sidebar" align="right">
+          <table cellspacing="0"  border="1"  summary="">
+          <thead>
+               <tr><th colspan="7" align="center">Game History (${len(moves)/2} moves)</th></tr>
+               <tr align="center">
+                   <th>#</th><th> Move </th><th> Color </th><th> Time </th>
+                   <th> Score </th><th> Searched </th><th> Depth </th>
+                </tr>
+          </thead>
+          <tbody>
+            <tr py:for="i, (frm,to,is_kill,time,score,nsearched,depth) in enumerate(moves)">
+                <td align="right">${i/2+1}</td>
+                <td align="center"> 
+                    <a href="" onclick="return false;" onmousedown="draw_board(boards[${i}], $frm, $to, statuses[$i]);">${PChess.get_label((frm,to,is_kill))}
+                    </a>
+                </td>
+                <td py:if="i%2==0" align="center" > white </td>
+                <td py:if="i%2==1" align="center" > black </td>
+                <td align="right"> $time </td>
+                <td align="right"> $score </td>
+                <td align="right"> $nsearched </td>
+                <td align="right"> $depth </td>
+            </tr>
+          </tbody>
+          </table>
+      </div>
+    </div>
+  </body>
+</html>
